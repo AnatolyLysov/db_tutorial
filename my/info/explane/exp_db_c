@@ -1,0 +1,74 @@
+The db.c file is the main source code for a simple, custom-built database engine. Here’s a high-level explanation of its structure and functionality:
+
+---
+
+### 1. **Includes and Type Definitions**
+- Includes standard C libraries for file I/O, memory, and string handling.
+- Defines several structs and enums:
+  - `InputBuffer`: Handles user input.
+  - `Row`: Represents a database row (with `id`, `username`, `email`).
+  - `Statement`: Represents a parsed SQL statement (insert/select).
+  - Various enums for command and execution results.
+
+---
+
+### 2. **Constants and Macros**
+- Defines constants for column sizes, page size, and maximum pages.
+- Macros and constants help with memory layout for rows and B-tree nodes.
+
+---
+
+### 3. **Pager and Table**
+- `Pager`: Manages reading/writing pages (blocks of data) from/to the database file.
+- `Table`: Represents the database, holding a pointer to the pager and the root page number.
+
+---
+
+### 4. **B-tree Node Management**
+- Functions and constants for managing B-tree nodes (internal and leaf nodes).
+- Handles node types, keys, children, and splitting nodes when they get full.
+
+---
+
+### 5. **Cursor**
+- `Cursor`: Used to iterate over rows in the table.
+- Functions for moving the cursor, finding rows, and advancing to the next row.
+
+---
+
+### 6. **Serialization**
+- Functions to serialize/deserialize `Row` structs to/from memory for storage in pages.
+
+---
+
+### 7. **Database Operations**
+- **Insert**: Adds a new row to the table, handling duplicates and splitting nodes if necessary.
+- **Select**: Reads and prints all rows from the table.
+
+---
+
+### 8. **Meta-commands**
+- Handles commands starting with a dot (`.exit`, `.btree`, `.constants`).
+- `.exit` closes the database and exits.
+- `.btree` prints the B-tree structure.
+- `.constants` prints internal constants.
+
+---
+
+### 9. **SQL Statement Parsing**
+- Parses user input into `Statement` structs (supports `insert` and `select`).
+
+---
+
+### 10. **Main Loop**
+- Reads user input, parses it, and executes the appropriate command or SQL statement.
+- Handles errors and prints results.
+
+---
+
+### **Summary**
+- The file implements a basic, persistent, single-table database using a B-tree for storage.
+- It supports inserting and selecting rows, and manages data on disk using paging.
+- The code is modular, separating concerns like input handling, storage, and B-tree logic.
+
+If you want a deeper explanation of any part, let me know!

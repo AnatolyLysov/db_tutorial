@@ -1,0 +1,33 @@
+In the context of your db.c file, the **Main loop commands** are the commands that the database program accepts from user input in its main loop. These include:
+
+### 1. **Meta-commands** (start with a dot `.`)
+- `.exit` — Exit the program.
+- `.btree` — Print the B-tree structure (for debugging/learning).
+- `.constants` — Print internal constants (for debugging/learning).
+
+### 2. **SQL-like commands**
+- `insert <id> <username> <email>` — Insert a new row into the database.
+- `select` — Retrieve and display all rows in the database.
+
+---
+
+**How it works:**  
+When you run the program (e.g., with `make run`), it enters a loop where it:
+1. Prompts for input.
+2. Reads a line from the user.
+3. If the line starts with `.`, it treats it as a meta-command.
+4. Otherwise, it parses the line as an SQL statement (`insert` or `select`).
+5. Executes the command and prints the result or error.
+
+---
+
+**Example session:**
+```
+db > insert 1 alice alice@email.com
+Executed.
+db > select
+(1, alice, alice@email.com)
+db > .exit
+```
+
+Let me know if you want to see the actual main loop code or a deeper explanation!

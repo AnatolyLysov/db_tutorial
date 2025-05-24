@@ -1,0 +1,56 @@
+A Makefile is a special file used by the `make` build automation tool to define how to build and manage your project. It contains rules that tell `make` how to compile, run, test, and clean your project.
+
+Here's a breakdown of your Makefile:
+
+```makefile
+db: db.c
+	gcc db.c -o db
+```
+- **Target:** `db`
+- **Dependency:** db.c
+- **Command:** Compiles db.c into an executable named `db` using `gcc`.
+
+```makefile
+run: db
+	./db mydb.db
+```
+- **Target:** `run`
+- **Dependency:** `db`
+- **Command:** Runs the compiled database program with `mydb.db` as the database file.
+
+```makefile
+clean:
+	rm -f db *.db
+```
+- **Target:** `clean`
+- **Command:** Removes the compiled executable and any `.db` files.
+
+```makefile
+test: db
+	bundle exec rspec
+```
+- **Target:** `test`
+- **Dependency:** `db`
+- **Command:** Runs tests using RSpec (usually for Ruby projects).
+
+```makefile
+format: *.c
+	clang-format -style=Google -i *.c
+```
+- **Target:** `format`
+- **Dependency:** All `.c` files
+- **Command:** Formats all C source files using `clang-format` with the Google style.
+
+**Usage examples:**
+- Build the project:  
+  `make db`
+- Run the project:  
+  `make run`
+- Clean up build files:  
+  `make clean`
+- Run tests:  
+  `make test`
+- Format code:  
+  `make format`
+
+You can run any of these commands in your terminal from the project directory.

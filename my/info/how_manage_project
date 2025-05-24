@@ -1,0 +1,33 @@
+You can manage this project using the commands defined in the Makefile. Here are the main commands:
+
+- **Build the database program:**  
+  ```
+  make db
+  ```
+  This compiles db.c into an executable named db.
+
+- **Run the database:**  
+  ```
+  make run
+  ```
+  This runs the compiled program with mydb.db as the database file.
+
+- **Clean build and database files:**  
+  ```
+  make clean
+  ```
+  This removes the compiled executable and any `.db` files.
+
+- **Run tests:**  
+  ```
+  make test
+  ```
+  This runs tests using RSpec (if you have Ruby and RSpec set up).
+
+- **Format C code:**  
+  ```
+  make format
+  ```
+  This formats all `.c` files using `clang-format` with the Google style.
+
+You can run these commands in your terminal from the project directory.
